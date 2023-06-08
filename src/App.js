@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Route, Routes } from 'react-router'
+import RouteLayouts from './Pages/RouteLayouts'
+import Home from './Pages/Home'
+import MealDetail from './Pages/MealDetail'
+import SearchPage from './Pages/SearchPage'
+import MealIngridient from './Pages/MealIngridient'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    
+    <Routes>
+      <Route path='/' element={<RouteLayouts />}>
+        
+        <Route path='/' element={<Home />}/>
+
+        <Route path='category/:name' element={<MealDetail />}/>
+
+        <Route path='ingridient/:id' element={<MealIngridient />} />
+
+        <Route path='search/:searchText' element={<SearchPage/>}/>
+
+
+
+
+        <Route path='*' element={<h1>Page not found Here</h1>} />
+
+
+      </Route>
+    </Routes>
+    
+    </>
+  )
 }
 
-export default App;
+export default App
